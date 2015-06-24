@@ -1,4 +1,4 @@
-package io.github.spyroo.logs.factories;
+package io.github.spyroo.logs.factory;
 
 import io.github.spyroo.logs.structure.Player;
 

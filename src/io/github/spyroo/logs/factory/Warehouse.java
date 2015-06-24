@@ -1,4 +1,4 @@
-package io.github.spyroo.logs.factories;
+package io.github.spyroo.logs.factory;
 
 public interface Warehouse<T, I> {
 
