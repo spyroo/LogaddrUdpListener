@@ -13,25 +13,21 @@ public class LogLineWarehouse implements Warehouse<LogLine, Integer>{
 
     }
 
-    @Override
     public Integer store(LogLine obj) {
         loglines.add(obj);
         return loglines.size() - 1;
     }
 
-    @Override
     public LogLine discard(Integer id) {
         LogLine line = loglines.get(id);
-        loglines.remove(id);
+        loglines.remove(id.intValue());
         return line;
     }
 
-    @Override
     public List<LogLine> getInventory() {
         return loglines;
     }
 
-    @Override
     public int size() {
         return loglines.size();
     }
