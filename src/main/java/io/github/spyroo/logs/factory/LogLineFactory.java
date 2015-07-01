@@ -8,7 +8,7 @@ public class LogLineFactory implements Factory<LogLine, String>{
         //nothing here, I just need loglinefactory to be protected
     }
 
-    @Override
+    //TODO
     public LogLine create(String arg) {
         return null;
     }

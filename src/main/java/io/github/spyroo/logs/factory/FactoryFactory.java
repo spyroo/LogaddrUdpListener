@@ -9,6 +9,9 @@ public class FactoryFactory {
         if(factoryType.equalsIgnoreCase("player")){
             return new PlayerFactory();
         }
+        if(factoryType.equalsIgnoreCase("udpconnection")){
+            return new UdpConnectionFactory();
+        }
         return null;
     }
 
