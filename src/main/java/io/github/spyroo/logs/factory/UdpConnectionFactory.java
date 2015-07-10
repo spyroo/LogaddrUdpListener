@@ -2,15 +2,14 @@ package io.github.spyroo.logs.factory;
 
 import io.github.spyroo.logs.structure.network.UdpConnection;
 
-import java.net.InetAddress;
 
-public class UdpConnectionFactory implements Factory<UdpConnection, InetAddress>{
+public class UdpConnectionFactory implements Factory<UdpConnection, String>{
 
     protected UdpConnectionFactory(){
 
     }
 
-    public UdpConnection create(InetAddress arg) {
+    public UdpConnection create(String arg) {
         return new UdpConnection(arg);
     }
 }

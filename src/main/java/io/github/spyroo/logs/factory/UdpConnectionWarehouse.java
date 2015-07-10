@@ -32,7 +32,7 @@ public class UdpConnectionWarehouse implements Warehouse<UdpConnection, Integer>
     }
 
 
-    public UdpConnection searchForExistingConnection(InetAddress address){
+    public UdpConnection searchForExistingConnection(String address){
         for(UdpConnection connection : udpConnectionList){
             if(connection.getHost().equals(address)){
                 return connection;

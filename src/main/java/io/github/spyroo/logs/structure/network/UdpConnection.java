@@ -8,22 +8,22 @@ import java.net.InetAddress;
 
 public class UdpConnection {
 
-    private InetAddress host;
+    private String host;
     private LogLineWarehouse logLineWarehouse;
     private PlayerWarehouse playerWarehouse;
 
-    public UdpConnection(InetAddress host){
+    public UdpConnection(String host){
         this.host = host;
         WarehouseFactory warehouseFactory = new WarehouseFactory();
         logLineWarehouse = (LogLineWarehouse) warehouseFactory.create("logline");
         playerWarehouse = (PlayerWarehouse) warehouseFactory.create("player");
     }
 
-    public InetAddress getHost() {
+    public String getHost() {
         return host;
     }
 
-    public void setHost(InetAddress host) {
+    public void setHost(String host) {
         this.host = host;
     }
 

@@ -23,6 +23,7 @@ public class UdpListener implements Runnable {
     public UdpListener() {
         try {
             socket = new DatagramSocket(PORT);
+            logger.info("Listening IP: " + socket.getInetAddress());
             logger.info(String.format("Created DatagramSocket on port %d", PORT));
             WarehouseFactory warehouseFactory = new WarehouseFactory();
             FactoryFactory factoryFactory = new FactoryFactory();
@@ -41,18 +42,19 @@ public class UdpListener implements Runnable {
             DatagramPacket packet = new DatagramPacket(buf, buf.length);
             while(true) {
 
-                UdpConnection connection = udpConnectionWarehouse.searchForExistingConnection(packet.getAddress());
-                if(connection == null){
-                    udpConnectionWarehouse.store(udpConnectionFactory.create(packet.getAddress()));
-                }
                 socket.receive(packet);
+                UdpConnection connection = udpConnectionWarehouse.searchForExistingConnection(packet.getAddress().getHostAddress());
+                if(connection == null){
+                    int id = udpConnectionWarehouse.store(udpConnectionFactory.create(packet.getAddress().getHostAddress()));
+                    connection = udpConnectionWarehouse.getInventory().get(id);
+                }
                 String rec = new String(packet.getData(), 0, packet.getLength()).replaceAll("\n", "");
-                connection.getLogLineWarehouse().store(logLineFactory.create(rec));
+                //connection.getLogLineWarehouse().store(logLineFactory.create(rec));
 
-                /*
 
-                logger.trace(rec);
-                List<String> tokens = Arrays.asList(rec.split(" "));
+                logger.trace(connection.getHost() + " rec: " + rec);
+
+                /*List<String> tokens = Arrays.asList(rec.split(" "));
                 logger.trace(tokens);
                 */
 
